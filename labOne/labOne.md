@@ -194,5 +194,3 @@ This code groups the dataset by the `ocean_proximity` category and calculates th
    - In a dataset with a few extremely high-income individuals (like billionaires), the **median** is often a better metric than the mean because it is less influenced by outliers.
 
 ---
-
-Let me know if you'd like any further explanation or code refinements!

@@ -256,5 +256,3 @@ In this lab, you:
 - Applied thresholding for segmentation.
 - Used template matching for locating objects in an image.
 - Implemented your own template matching algorithm.
-
-Let me know if you need further clarification or assistance with any part of the lab!

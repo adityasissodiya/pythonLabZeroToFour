@@ -239,5 +239,3 @@ To implement an N-dimensional grid search for optimizing multiple hyperparameter
 - **Task 1**: You implemented K-means clustering from scratch and visualized the clusters.
 - **Task 2**: You performed grid search to find the optimal number of clusters using silhouette scores and re-visualized the clusters.
 - **Task 2.3**: You classified new data points based on the trained K-means model.
-
-Let me know if you need further assistance with any part of the lab!
