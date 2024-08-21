@@ -7,8 +7,8 @@ from skimage.feature import match_template
 import numpy as np
 
 # Load the images
-coins_image = io.imread('/home/aditya/Documents/pythonLabZeroToFour/labFour/coins.jpg')
-astronaut_image = io.imread('/home/aditya/Documents/pythonLabZeroToFour/labFour/astronaut.jpg')
+coins_image = io.imread('C:/Users/adisis/OneDrive - Luleå University of Technology/Documents/pythonLabZeroToFour/labFour/coins.jpg')
+astronaut_image = io.imread('C:/Users/adisis/OneDrive - Luleå University of Technology\Documents/pythonLabZeroToFour/labFour/astronaut.jpg')
 
 # Display the images
 plt.figure(figsize=(10, 5))
@@ -58,24 +58,43 @@ print("Astronaut grayscale image dtype:", astronaut_gray.dtype)
 astronaut_resized = resize(astronaut_image, (100, 100))
 
 # Rescale the astronaut image
-astronaut_rescaled_075 = rescale(astronaut_image, 0.75)
-astronaut_rescaled_05 = rescale(astronaut_image, 0.5)
-astronaut_rescaled_025 = rescale(astronaut_image, 0.25)
+astronaut_rescaled_075 = rescale(astronaut_image, 0.75, anti_aliasing=True)
+astronaut_rescaled_05 = rescale(astronaut_image, 0.5, anti_aliasing=True)
+astronaut_rescaled_025 = rescale(astronaut_image, 0.25, anti_aliasing=True)
+
+def ensure_rgb(image):
+    """Ensure the image has 3 channels (RGB)."""
+    if image.ndim == 2:  # Grayscale image, convert to RGB by replicating the single channel
+        return np.stack([image] * 3, axis=-1)
+    elif image.shape[-1] == 2:  # Invalid 2 channels, convert to RGB
+        return np.dstack([image, np.zeros_like(image[..., 0])])
+    return image  # Already in RGB format
+
+# Ensure all images are RGB or valid grayscale
+astronaut_resized = ensure_rgb(astronaut_resized)
+astronaut_rescaled_075 = ensure_rgb(astronaut_rescaled_075)
+astronaut_rescaled_05 = ensure_rgb(astronaut_rescaled_05)
+astronaut_rescaled_025 = ensure_rgb(astronaut_rescaled_025)
 
 # Display the resized and rescaled images
 plt.figure(figsize=(10, 5))
+
+# For Resized Image
 plt.subplot(1, 4, 1)
 plt.imshow(astronaut_resized)
 plt.title('Resized Image (100x100)')
 
+# For Rescaled 0.75 Image
 plt.subplot(1, 4, 2)
 plt.imshow(astronaut_rescaled_075)
 plt.title('Rescaled 0.75')
 
+# For Rescaled 0.5 Image
 plt.subplot(1, 4, 3)
 plt.imshow(astronaut_rescaled_05)
 plt.title('Rescaled 0.5')
 
+# For Rescaled 0.25 Image
 plt.subplot(1, 4, 4)
 plt.imshow(astronaut_rescaled_025)
 plt.title('Rescaled 0.25')

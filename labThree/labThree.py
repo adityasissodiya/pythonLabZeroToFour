@@ -9,28 +9,29 @@ def load_csv(filepath):
         lines = file.readlines()
         for line in lines[1:]:  # Skipping the header
             values = line.strip().split(',')
-            # Handle mixed data types: convert only numeric fields to float
+            # Convert rent and income columns to float
             row = []
-            for v in values:
-                try:
-                    # Try to convert to float
-                    row.append(float(v))
-                except ValueError:
-                    # If conversion fails, keep as a string
-                    row.append(v)
+            try:
+                row.append(float(values[3]))  # Annual rent
+                row.append(float(values[4]))  # Avg yearly income
+            except ValueError:
+                continue  # Skip rows with invalid data
             data.append(row)
     return data
 
 # Load the rent_vs_inc dataset
-data = load_csv('/home/aditya/Documents/pythonLabZeroToFour/labThree/inc_vs_rent.csv')
+data = load_csv('C:/Users/adisis/OneDrive - Luleå University of Technology/Documents/pythonLabZeroToFour/labThree/inc_vs_rent.csv')
 
 # Inspect the first few rows of the data
 for row in data[:5]:
     print(row)
 
+# Convert data to NumPy array
+data_np = np.array(data)
+
 # Extract rent and income values
-rent = [row[0] for row in data]
-income = [row[1] for row in data]
+rent = data_np[:, 0]
+income = data_np[:, 1]
 
 # Create scatter plot
 plt.scatter(rent, income)
@@ -60,15 +61,12 @@ def kmeans(data, k, iterations=10):
         new_centroids = [np.mean(cluster, axis=0) if len(cluster) > 0 else centroids[i] for i, cluster in enumerate(clusters)]
 
         # Check for convergence (centroids don't change)
-        if np.all(centroids == new_centroids):
+        if np.array_equal(centroids, new_centroids):
             break
 
         centroids = new_centroids
 
     return centroids, clusters
-
-# Convert data to NumPy array
-data_np = np.array(data)
 
 # Apply K-means with 3 clusters
 centroids, clusters = kmeans(data_np, 3)
@@ -127,6 +125,7 @@ for i, cluster in enumerate(optimal_clusters):
     plt.scatter(cluster[:, 0], cluster[:, 1], c=colors[i % len(colors)])
 
 # Plot the centroids
+optimal_centroids = np.array(optimal_centroids)
 plt.scatter(optimal_centroids[:, 0], optimal_centroids[:, 1], c='k', marker='x', label='Centroids')
 
 plt.xlabel('Rent')

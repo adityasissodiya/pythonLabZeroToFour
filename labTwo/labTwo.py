@@ -24,7 +24,7 @@ def load_csv(filepath):
     return data
 
 # Loading the subset data from the CSV
-subset_data = load_csv('/home/aditya/Documents/pythonLabZeroToFour/labTwo/inc_subset.csv')
+subset_data = load_csv('C:/Users/adisis/OneDrive - Luleå University of Technology/Documents/pythonLabZeroToFour/labTwo/inc_subset.csv')
 
 # Inspect data using print or debugger
 for row in subset_data:
@@ -93,18 +93,56 @@ for actual, predicted in zip(validation_data[:, 1], predicted_income):
     print(f"Actual: {actual}, Predicted: {predicted}")
 
 # Load the full dataset
-full_data = load_csv('/home/aditya/Documents/pythonLabZeroToFour/labTwo/inc_utf.csv')
+full_data = load_csv('C:/Users/adisis/OneDrive - Luleå University of Technology/Documents/pythonLabZeroToFour/labTwo/inc_utf.csv')
 
-# Grouping by age using pandas
-df_full = pd.DataFrame(full_data, columns=['Age', 'Region', 'Year', 'Income'])
+# Convert to DataFrame
+df_full = pd.DataFrame(full_data, columns=['Index', 'Region', 'Age', 'Income'])
 
-# Clean the "Year" column (removing non-numeric values)
-df_full['Year'] = pd.to_numeric(df_full['Year'], errors='coerce')
 
-# Group by age and compute the mean income across regions
-grouped_data = df_full.groupby('Age').mean()['Income'].reset_index()
+# Clean the Age column by replacing 'years' and handling '100+' and other non-numeric cases
+def clean_age(age_str):
+    # Remove the ' years' part
+    age_str = age_str.replace(' years', '')
+
+    # Handle '100+' by replacing it with 100
+    if age_str == '100+':
+        return 100
+
+    # Try to convert to integer, return NaN if conversion fails
+    try:
+        return int(age_str)
+    except ValueError:
+        return np.nan
+
+
+# Apply the cleaning function to the Age column
+df_full['Age'] = df_full['Age'].apply(clean_age)
+
+# Convert the Income column to numeric, forcing non-numeric values to NaN
+df_full['Income'] = pd.to_numeric(df_full['Income'], errors='coerce')
+
+# Drop any rows where Age or Income is NaN
+df_full = df_full.dropna(subset=['Age', 'Income'])
+
+# Ensure that only numeric columns are used in the groupby and mean calculation
+grouped_data = df_full.groupby('Age')['Income'].mean().reset_index()
+
 
 # Perform linear regression on the grouped data
+def linear_regression(X, y):
+    X_mean = np.mean(X)
+    y_mean = np.mean(y)
+
+    # Using the formula for slope (m) and intercept (b)
+    numerator = np.sum((X - X_mean) * (y - y_mean))
+    denominator = np.sum((X - X_mean) ** 2)
+    slope = numerator / denominator
+    intercept = y_mean - slope * X_mean
+
+    return slope, intercept
+
+
+# Perform linear regression
 slope_full, intercept_full = linear_regression(grouped_data['Age'], grouped_data['Income'])
 
 # Plot the results
