@@ -194,3 +194,8 @@ This code groups the dataset by the `ocean_proximity` category and calculates th
    - In a dataset with a few extremely high-income individuals (like billionaires), the **median** is often a better metric than the mean because it is less influenced by outliers.
 
 ---
+
+![alt text](https://github.com/adityasissodiya/pythonLabZeroToFour/blob/main/labOne/labOne_1.png)
+![alt text](https://github.com/adityasissodiya/pythonLabZeroToFour/blob/main/labOne/labOne_2.png)
+![alt text](https://github.com/adityasissodiya/pythonLabZeroToFour/blob/main/labOne/labOne_3.png)
+![alt text](https://github.com/adityasissodiya/pythonLabZeroToFour/blob/main/labOne/labOne_4.png)

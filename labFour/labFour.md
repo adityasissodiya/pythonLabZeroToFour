@@ -256,3 +256,9 @@ In this lab, you:
 - Applied thresholding for segmentation.
 - Used template matching for locating objects in an image.
 - Implemented your own template matching algorithm.
+
+![alt text](https://github.com/adityasissodiya/pythonLabZeroToFour/blob/main/labFour/labFour_1.png)
+![alt text](https://github.com/adityasissodiya/pythonLabZeroToFour/blob/main/labFour/labFour_2.png)
+![alt text](https://github.com/adityasissodiya/pythonLabZeroToFour/blob/main/labFour/labFour_3.png)
+![alt text](https://github.com/adityasissodiya/pythonLabZeroToFour/blob/main/labFour/labFour_4.png)
+![alt text](https://github.com/adityasissodiya/pythonLabZeroToFour/blob/main/labFour/labFour_5.png)

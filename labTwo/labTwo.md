@@ -230,3 +230,7 @@ plt.show()
 1. **Linear Regression**: Manually implemented from scratch on both a subset and the full dataset.
 2. **Polynomial Regression**: Performed using `scikit-learn` with various degrees of polynomials.
 3. **Evaluation**: Both methods are evaluated using MSE and graphical comparison, followed by a discussion on which model performs better.
+
+![alt text](https://github.com/adityasissodiya/pythonLabZeroToFour/blob/main/labTwo/labTwo_1.png)
+![alt text](https://github.com/adityasissodiya/pythonLabZeroToFour/blob/main/labTwo/labTwo_2.png)
+![alt text](https://github.com/adityasissodiya/pythonLabZeroToFour/blob/main/labTwo/labTwo_3.png)

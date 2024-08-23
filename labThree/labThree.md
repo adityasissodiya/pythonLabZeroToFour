@@ -239,3 +239,9 @@ To implement an N-dimensional grid search for optimizing multiple hyperparameter
 - **Task 1**: You implemented K-means clustering from scratch and visualized the clusters.
 - **Task 2**: You performed grid search to find the optimal number of clusters using silhouette scores and re-visualized the clusters.
 - **Task 2.3**: You classified new data points based on the trained K-means model.
+
+![alt text](https://github.com/adityasissodiya/pythonLabZeroToFour/blob/main/labThree/labThree_1.png)
+![alt text](https://github.com/adityasissodiya/pythonLabZeroToFour/blob/main/labThree/labThree_2.png)
+![alt text](https://github.com/adityasissodiya/pythonLabZeroToFour/blob/main/labThree/labThree_3.png)
+![alt text](https://github.com/adityasissodiya/pythonLabZeroToFour/blob/main/labThree/labThree_4.png)
+![alt text](https://github.com/adityasissodiya/pythonLabZeroToFour/blob/main/labThree/labThree_5.png)
