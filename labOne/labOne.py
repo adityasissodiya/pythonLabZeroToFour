@@ -65,7 +65,7 @@ print("Median:", calculate_median(grades))
 print("Median Absolute Deviation:", calculate_mad(grades))
 
 # Load the dataset
-housing_data = pd.read_csv("/home/aditya/Documents/pythonLabZeroToFour/labOne/housing.csv")
+housing_data = pd.read_csv("C:/Users/adisis/OneDrive - Luleå University of Technology/Documents/pythonLabZeroToFour/labOne/housing.csv")
 
 # Show the first few rows of the dataset
 print(housing_data.head())
